@@ -23,7 +23,7 @@ const DetailProduct = ({ item }) => {
                                 {item.condition === "new" ? "Nuevo" + (item.sold_quantity !=0 ? " - " + item.sold_quantity + " vendidos": "") : ""}
                             </p>
                             <p className='title'><strong>{item.title}</strong> </p>
-                            <div>
+                            <div className='price'>
                                 <span className='price-currency'> {item.currency =='ARS' ? '$' : item.currency }</span>
                                 <span className='price-int'> {item.price}</span>
                                 <span className='price-cents'><sup>{item.cents != 0 ? item.cents:"00"}</sup></span>

@@ -25,9 +25,15 @@ module.exports = {
                 
             },
             {
-                test: /\.css$/,
+                test: /\.(c|sc|sa)ss$/,
                 exclude: /node_modules/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader
+                    },
+                    'css-loader',
+                    'sass-loader'
+                ]
             },
             {
                 test: /\.(png|jpe?g|gif)$/i,
@@ -45,7 +51,7 @@ module.exports = {
     plugins: [
         new CopyWebpackPlugin({
             patterns: [
-                { from: 'src/images', to: 'images' },            ],
+                { from: 'src/images', to: 'images' }, ],
         }),
         new MiniCssExtractPlugin({
             filename: '[name].css',

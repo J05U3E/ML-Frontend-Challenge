@@ -1,9 +1,8 @@
 const React = require('react');
 const { hydrateRoot } = require('react-dom/client');
 const DetailView = require('../pages/detail-page/view.js')
-require('../pages/init-page/SearchBox.css');
-require('../pages/detail-page/styles.scss');
-require('../pages/detail-page/DetailProduct.css');
+require('../pages/init-page/SearchBox.scss');
+require('../pages/detail-page/DetailProduct.scss');
 
 const data = window.__PRELOADED_STATE__;
 

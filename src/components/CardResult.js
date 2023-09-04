@@ -15,9 +15,9 @@ const CardResult = (props) => {
                     <div className='text-price'>
                         <span className='price-currency'> {props.currency =='ARS' ? '$' : props.currency }</span>
                         <span className='price-int'> {props.price}</span>
-                        <span className='price-cents'><sup>{props.cents != 0 ? props.cents:"00"}      </sup></span>
-                        <img
-                        src="/static/images/ic_shipping.png"
+                        <span className='price-cents'><sup>{props.cents != 0 ? props.cents:"00"}</sup></span>
+                        <img 
+                        src={props.shipping}    // "/static/images/ic_shipping.png"
                         className='sendlogo' />
                     </div>
                     

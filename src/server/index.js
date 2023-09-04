@@ -16,6 +16,8 @@ app.use(express.urlencoded({extended: true}))
 
 //middleware para buscar en a api de mercado libre  
 const getItems = async (req,res,next) => {
+    
+    const getItems = [];
     const search = req.query.search
     const items = await axios.get(`https://api.mercadolibre.com/sites/MLA/search`,{
         params: {
@@ -23,34 +25,39 @@ const getItems = async (req,res,next) => {
             limit:'4'
         }
     });
-    const categoryPath = await axios.get(`https://api.mercadolibre.com/categories/${items.data.results[0].category_id}`)
-    const breadCrumb1 = categoryPath.data.path_from_root.map(ob => ob.name);
-    const lastCategory = breadCrumb1.pop();
-    breadCrumb1.push("")
-    const category = breadCrumb1.join("  >  ");
+    if(items.data.paging.total == 0){
+        const err = {message:"No hay resultados"};
+        getItems.push(err)
+        //return res.status(201).send('<h3>No hay resultados</h3>')
+    }else{
+        const categoryPath = await axios.get(`https://api.mercadolibre.com/categories/${items.data.results[0].category_id}`)
+        const breadCrumb1 = categoryPath.data.path_from_root.map(ob => ob.name);
+        const lastCategory = breadCrumb1.pop();
+        breadCrumb1.push("")
+        const category = breadCrumb1.join("  >  ");
 
-    const getItems = [];
-    
-    for (let i = 0; i < 4; i++) {
-        const price = items.data.results[i].price;
-        const priceInt = Math.floor(price);
-        const cents = Math.floor((price - priceInt) * 100);
+        
+        for (let i = 0; i < 4; i++) {
+            const price = items.data.results[i].price;
+            const priceInt = Math.floor(price);
+            const cents = Math.floor((price - priceInt) * 100);
 
-        if(items.data.results[i] != undefined){
-            const a = { 
-            id:items.data.results[i].id, 
-            category,
-            lastCategory,
-            img:items.data.results[i].thumbnail, 
-            title : items.data.results[i].title, 
-            currency: items.data.results[i].currency_id,
-            price: new Intl.NumberFormat('de-DE').format(priceInt),
-            cents,
-            city: items.data.results[i].address.city_name,
-            state: items.data.results[i].address.state_name,
-            shipping: items.data.results[i].shipping.free_shipping,
-            };
-        getItems.push(a);
+            if(items.data.results[i] != undefined){
+                const a = { 
+                id:items.data.results[i].id, 
+                category,
+                lastCategory,
+                img:items.data.results[i].thumbnail, 
+                title : items.data.results[i].title, 
+                currency: items.data.results[i].currency_id,
+                price: new Intl.NumberFormat('de-DE').format(priceInt),
+                cents,
+                city: items.data.results[i].address.city_name,
+                state: items.data.results[i].address.state_name,
+                shipping: items.data.results[i].shipping.free_shipping,
+                };
+            getItems.push(a);
+            }
         }
     }
     //console.log(getItems);
@@ -106,11 +113,6 @@ app.get('/', (req, res)=>{
 app.get('/init', render(InitView));
 app.get('/results', getItems, render(ResultsView));
 app.get('/detail', getProduct, render(DetailView));
-
-// app.use((err, req, res, next) => {
-//     console.error(err.stack);
-//     res.status(500).send('algo salio maaaaal!');
-// });
 
 app.listen(3000, () => {
     console.log('server started: http://localhost:3000')

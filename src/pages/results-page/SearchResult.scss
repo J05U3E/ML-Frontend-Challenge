@@ -1,0 +1,24 @@
+@use '../sourcesVarMix.scss';
+
+body{
+    background-color: #EEEEEE;
+    justify-content: center;
+}
+.container-results{
+    @include sourcesVarMix.position;
+}
+.path-breadcrumb{
+    margin-top: 16px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-family: sourcesVarMix.$font-family1;
+    color: #999999;
+    width: sourcesVarMix.$width-content;
+}
+
+.list-cards{
+    @include sourcesVarMix.position;
+    @include sourcesVarMix.mar-pad;
+    width: sourcesVarMix.$width-content;
+    list-style-type: none;
+}

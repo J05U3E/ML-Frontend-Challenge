@@ -1,7 +1,8 @@
+@use '../sourcesVarMix.scss';
+
 * {
+    @include sourcesVarMix.mar-pad;
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 .header{
@@ -11,13 +12,16 @@
     justify-content:center;
     align-items:center ; 
 }
-
 .header__width{
-    width: 964px;
     height: 32px;
+    width: sourcesVarMix.$width-content;
     display: flex;
     flex-direction: row;
-    /* align-items:center ; */
+}
+
+.logo-contenedor{
+    @include sourcesVarMix.mar-pad;
+    align-items: center;
 }
 
 .LogoML{
@@ -32,23 +36,21 @@
 }
 
 .input-text{
+    @include sourcesVarMix.mar-pad;
     color: #333333;
     font-size:18px;
     height: 32px;
     width: 100%;
     border:none;
-    margin: 0px;
-    padding: 0px;
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
 }
 
 .search-button{
+    @include sourcesVarMix.mar-pad;
     border:none;
     height: 32px;
     width: 32px;
-    margin: 0px;
-    padding: 0px;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
     cursor: pointer
@@ -60,10 +62,3 @@
     background-color: #eeeeee;
     color: #999999;
 }
-
-.logo-contenedor{
-    padding: 0;
-    margin: 0;
-    align-items: center;
-}
-

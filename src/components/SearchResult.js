@@ -30,17 +30,18 @@ const SearchResult = ({ items }) => {
                                 <CardResult 
                                     id={item.id} 
                                     onDetail={onDetail} 
-                                    title={item.title} 
+                                    title={item.title == undefined ? item.message:item.title} 
                                     price={item.price} 
                                     currency={item.currency} 
                                     cents={item.cents}
-                                    img={item.img} 
+                                    img={item.img == undefined ? "/static/images/404.png" :item.img} 
                                     city={item.city} 
                                     state={item.state} 
+                                    shipping={item.shipping == false || item.img == undefined ? " " :"/static/images/ic_shipping.png"}
                                 />
                             </li>
                         ))
-                    }
+                    }       
                 </ul>
             </div>
         </div>
