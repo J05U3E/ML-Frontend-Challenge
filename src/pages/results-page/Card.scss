@@ -11,9 +11,12 @@
     vertical-align: middle;
 }
 
+
 .text{
     flex-grow: 2;
+    cursor: pointer;
 }
+
 .text-price{
     margin-top: 2rem;
     margin-bottom: 1rem;
@@ -21,6 +24,7 @@
     font-size: 24px;
     font-family: sourcesVarMix.$font-family1;
 }
+
 .price-cents{
     margin: 0px 1px 20px 2px;
     font-size: 18px;
@@ -36,11 +40,12 @@
     margin: 1rem;
     width: 180px;
     border-radius: 4px;
+    cursor: pointer;
 }
 
+
 .state-city{
-    margin-right: 2rem;
-    margin-top: 2rem;
+    margin: 2rem 2rem 0rem 2rem;
     font-size: 12px;
 }
 
@@ -55,5 +60,65 @@
     border: 1px solid #EEEEEE;
     border-radius: 1px;
     width: 85%;
-    
 }
+
+@media (max-width: sourcesVarMix.$width-content) and (min-width: sourcesVarMix.$width-mobile){
+    .container-card{
+        height: 212px;
+        width: 100%;
+        justify-content: space-between;
+        vertical-align: middle;
+    }
+    .text{
+        width: auto;
+    }
+    .state-city{
+        margin: 2rem 2rem 0rem 2rem;
+        font-size: 12px;
+    }
+
+}
+
+@media (max-width: sourcesVarMix.$width-mobile){
+    .container-card{
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        vertical-align: middle;
+    }
+    .text{
+        margin: 0rem 1rem 0rem 1rem;
+        display: flex;
+        flex-direction: column;
+        .text-title{
+            order: 1;
+            font-size: 1.2rem;
+        }
+        .text-price{
+            order: 2;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+        .price-cents{
+            margin: 0px 1px 20px 2px;
+            font-size: 11px;
+        }
+    }
+    .image-product{
+        order: 3;
+        max-height: 180px;
+        margin: 0rem 0rem 0rem 1rem ;
+        width: 180px;
+        border-radius: 4px;
+    }
+
+    .state-city{
+        order: 4;
+        margin: 1rem 1rem 1rem 1rem;
+        font-size: 10px;
+    }
+
+}
+

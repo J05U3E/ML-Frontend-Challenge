@@ -21,10 +21,10 @@ const CardResult = (props) => {
                         className='sendlogo' />
                     </div>
                     
-                    <p className="text-title"> {props.title} </p>
+                    <div className="text-title"> {props.title} </div>
                 </div>
                 <div className='state-city'>
-                    <p>{props.state}</p>
+                    <p><strong>{props.state}</strong></p>
                     <p>{props.city}</p>
                 </div>
             </div>

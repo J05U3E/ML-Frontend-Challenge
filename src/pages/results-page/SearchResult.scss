@@ -4,9 +4,11 @@ body{
     background-color: #EEEEEE;
     justify-content: center;
 }
+
 .container-results{
     @include sourcesVarMix.position;
 }
+
 .path-breadcrumb{
     margin-top: 16px;
     margin-bottom: 16px;
@@ -21,4 +23,38 @@ body{
     @include sourcesVarMix.mar-pad;
     width: sourcesVarMix.$width-content;
     list-style-type: none;
+}
+
+@media (max-width: sourcesVarMix.$width-content) and (min-width: sourcesVarMix.$width-mobile){
+    .container-results{
+        width: 100%;
+        // margin-left: 1rem;
+        // margin-right: 1rem;
+    }
+    .path-breadcrumb{
+        width: 100%;
+        margin: 1rem 0rem 1rem 1rem;
+    }
+    .list-cards{
+        width: 100%;
+    }
+
+}
+
+@media (max-width: sourcesVarMix.$width-mobile){
+
+    .path-breadcrumb{
+        display: flex;
+        justify-content: center;
+        margin-top: 16px;
+        margin-bottom: 16px;
+        width: 100%;
+    }
+    
+    .list-cards{
+        @include sourcesVarMix.position;
+        @include sourcesVarMix.mar-pad;
+        width: auto;
+        list-style-type: none;
+    }
 }

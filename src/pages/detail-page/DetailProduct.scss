@@ -2,6 +2,7 @@
 
 body{
     background-color: #EEEEEE;
+    box-sizing: border-box;
 }
 
 .detail-body{
@@ -93,4 +94,64 @@ body{
     width: 686px;
     color: #666666;
     font-family: sourcesVarMix.$font-family1;
+}
+
+@media (max-width: sourcesVarMix.$width-content) {
+    
+    .detail-body{
+        display: block;
+        justify-content: center;
+        width: 100%;
+    }
+    .container-detail{
+        width: 100%;
+    }
+    .path-breadcrumb{
+        margin: 1rem;
+    }
+    .top{
+        width: 100%;
+        flex-direction: column;
+    }
+    .title-price{
+        width: 100%;
+        margin-left: 1rem ;
+        margin-right: 1rem ;
+    }
+    .condition{
+        order: 1;  
+    }
+    .title{
+        font-size: 20px;
+        order: 2;
+        margin-right: 1rem ;
+    }
+    .price{
+        display: inline-block;
+        width: 50%;
+        font-size: 32px;
+        order: 3;
+    }
+    .price-cents{
+        font-size: 25px;
+    }
+    .button-buy{
+        display: inline-block;
+        margin:auto;
+    }
+    .image-cantainer{
+        order: 4;
+        width: 90%;
+        margin: 0rem 1rem;
+    }
+    .description-title{
+        width: auto;
+        margin-left: 1rem ;
+        margin-right: 1rem ;
+    }
+    .description-text{
+        width: auto;
+        margin-left: 1rem ;
+        margin-right: 1rem ;
+    }
 }
